@@ -7,6 +7,7 @@ const Bisection =()=>{
    let [xl,Setxl] = useState(null)
    let [xr,Setxr] = useState(null)
    const [result,Setresult] = useState([]);
+   const [apidata,Setapidata] = useState({});
 
    const cal =(e)=>{
       e.preventDefault();
