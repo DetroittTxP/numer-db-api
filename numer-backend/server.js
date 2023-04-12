@@ -13,9 +13,6 @@ app.get('/',(req,res)=>{
 
 
 
-
-
-
 app.listen(port,()=>{
     console.log(`SERVER RUN ON PORT ${port}`);
 })

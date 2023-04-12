@@ -65,9 +65,12 @@ const Bisection =()=>{
                         <Form.Control onChange={e=>Setxr(parseFloat(e.target.value))} style={{width:300}}  type='text' placeholder="Enter xr" />
                </Form.Group>
                <Button  type='submit'   id='root-button'>CALCULATE</Button>
+               <Button id='root-api' >GET DATA</Button>
+
 
                <div className='root-answer'>
                     {result.length !== 0 && <h5>Answer is {result[result.length-1].xm} </h5>}
+
                </div>
 
             </Form>
