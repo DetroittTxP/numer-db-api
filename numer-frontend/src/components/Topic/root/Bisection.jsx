@@ -59,6 +59,7 @@ const Bisection =()=>{
       })
       .catch(err=>alert(err))
    }
+   
 
    return(
       <div className='root'>
@@ -87,10 +88,6 @@ const Bisection =()=>{
                     {result.length !== 0 && <h5>Answer is {result[result.length-1].xm} </h5>}
 
                </div>
-
-             
-
-           
 
                <div className='root-table'>
                      { result.length !== 0 &&

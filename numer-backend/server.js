@@ -36,6 +36,26 @@ app.get('/root',(req,res)=>{
      })
 })
 
+
+app.get('/interpolation',(req,res)=>{
+    
+    db.query(`SELECT * FROM interpolation WHERE size = ${req.query.key} ORDER BY RAND() LIMIT 1`,(err,results,field)=>{
+        if(err)console.log(err);
+        try{
+            const dataset = {
+                x:JSON.parse(results[0].x),
+                y:JSON.parse(results[0].y)
+            }
+            res.json(dataset);
+
+        }catch(err){
+            res.send(err);
+        }
+
+       
+    })
+})
+
 app.get('/linear',(req,res)=>{
 
     const { size } = req.query;
@@ -56,6 +76,7 @@ app.get('/linear',(req,res)=>{
 app.get('/',(req,res)=>{
     res.send({START:'SUCCESSFUL'})
 })
+
 
 
 
