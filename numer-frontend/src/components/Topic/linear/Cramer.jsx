@@ -40,26 +40,19 @@ const Cramer=()=>{
 
             <Form >
                   <Form.Group  >
-                    <div style={{display:'flex',position:'relative',left:1000,marginTop:20}}>
-
                     {m1.map((row,index)=>(
-                        <div  >
+                        <div style={{display:'flex',position:'relative',left:1000,marginTop:20}} >
                             {row.map((col,colindex)=>(
                                 <>
-                                    
-                                    <Form.Control style={{width:75,marginLeft:20,marginRight:3,marginTop:20}} value={col} key={index}/>
-                                   
+                                    <Form.Control   style={{width:75,marginLeft:20,marginRight:3}} value={col} key={index}/>
+                                    X{colindex < size-1 ? '+' : '='}
                                 </>
                             ))}
+                            <Form.Control value={m2[index]} style={{width:75,marginLeft:20,marginRight:3}} />
                         </div>
                     ))}
 
                 
-
-
-                    </div>
-                  
-               
                     </Form.Group>
                 
                 </Form>
