@@ -37,7 +37,10 @@ app.get('/root',(req,res)=>{
 })
 
 app.get('/linear',(req,res)=>{
-    db.query("SELECT * FROM linearalgebra ORDER BY RAND() LIMIT 1",(err,result,field)=>{
+
+    const { size } = req.query;
+
+    db.query(`SELECT * FROM linearalgebra WHERE size = ${size}`,(err,result,field)=>{
         if(err)console.log(err);
 
         const lineardata = {

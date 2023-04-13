@@ -92,4 +92,17 @@ h1 {
   left: 450px;
   height: 500px;
   width: 1000px;
+}
+
+.linear h2 {
+  text-align: center;
+  position: relative;
+  top: 45px;
+}
+
+.linear-form {
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=main.css.map */

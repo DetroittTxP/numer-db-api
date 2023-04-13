@@ -15,16 +15,16 @@ const Navbarr=()=>{
                  <NavDropdown.Item href='/bisection'>BISECTION</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title='LINEAR ALGEBRA'>
-                 <NavDropdown.Item>CRAMER RULE</NavDropdown.Item>
+                 <NavDropdown.Item href='/cramer'>CRAMER RULE</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title='INTERPOLATION'>
-                 <NavDropdown.Item>NEWTON DIVIDED DIFFERENCE</NavDropdown.Item>
+                 <NavDropdown.Item href='/newton'>NEWTON DIVIDED DIFFERENCE</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title='LEAST SQUARE REGRESSION'>
-                 <NavDropdown.Item>LINEAR REGRESSION</NavDropdown.Item>
+                 <NavDropdown.Item href='/regression'>LINEAR REGRESSION</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title='INTEGRATE'>
-                 <NavDropdown.Item>TRAPZOIDAL</NavDropdown.Item>
+                 <NavDropdown.Item href='/trap'>TRAPZOIDAL</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
