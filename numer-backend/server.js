@@ -3,15 +3,18 @@ const cors = require('cors');
 const mysql = require('mysql2');
 const port = 5555;
 const app = express();
+const swaggerUI = require('swagger-ui-express')
+const swaggerfile = require('./swaggerDOCS.json')
 
 app.use(cors());
+
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerfile));
 
 const db = mysql.createConnection({
     host:'localhost',
     user:'root',
     database:'numerical'
 })
-
 
 
 db.connect(err=>{
@@ -31,6 +34,19 @@ app.get('/root',(req,res)=>{
 
          res.json(equation)
      })
+})
+
+app.get('/linear',(req,res)=>{
+    db.query("SELECT * FROM linearalgebra ORDER BY RAND() LIMIT 1",(err,result,field)=>{
+        if(err)console.log(err);
+
+        const lineardata = {
+            matrixA:JSON.parse(result[0].matrixA),
+            matrixB:JSON.parse(result[0].matrixB)
+         }
+
+        res.json(lineardata)
+    })
 })
 
 
