@@ -1,6 +1,8 @@
 import {useState} from 'react';
-import {Button,Form,} from 'react-bootstrap';
+import {Button,Form,Table} from 'react-bootstrap';
 import { evaluate } from 'mathjs'
+import axios from 'axios'
+import Chart from './Chart'
 
 const Bisection =()=>{
    const [func,Setequation] = useState('')
@@ -46,6 +48,18 @@ const Bisection =()=>{
       console.log('success');
    }
 
+
+   const getdata= async ()=>{
+      await axios.get('http://localhost:5555/root')
+      .then(res=>{
+         Setapidata(res.data)
+         Setequation(res.data.equation)
+         Setxl(res.data.xl)
+         Setxr(res.data.xr)
+      })
+      .catch(err=>alert(err))
+   }
+
    return(
       <div className='root'>
           <h2>BISECTION</h2>      
@@ -53,20 +67,20 @@ const Bisection =()=>{
             <Form onSubmit={cal} >
                <Form.Group className="mb-4" >
                      <Form.Label>EQUATION</Form.Label>
-                        <Form.Control  onChange={e=>Setequation(e.target.value)} style={{width:300}}  type='text' placeholder="Enter equation" />
+                        <Form.Control value={apidata.equation}   onChange={e=>Setequation(e.target.value)} style={{width:300}}  type='text' placeholder="Enter equation" />
                </Form.Group>
 
                <Form.Group className="mb-4" >
                      <Form.Label>XL</Form.Label>
-                        <Form.Control onChange={e=>Setxl(parseFloat(e.target.value))} style={{width:300}}  type='text' placeholder="Enter xl" />
+                        <Form.Control value={apidata.xl}  onChange={e=>Setxl(parseFloat(e.target.value))} style={{width:300}}  type='text' placeholder="Enter xl" />
                </Form.Group>
 
                <Form.Group className="mb-4" >
                      <Form.Label>XR</Form.Label>
-                        <Form.Control onChange={e=>Setxr(parseFloat(e.target.value))} style={{width:300}}  type='text' placeholder="Enter xr" />
+                        <Form.Control value={apidata.xr}  onChange={e=>Setxr(parseFloat(e.target.value))} style={{width:300}}  type='text' placeholder="Enter xr" />
                </Form.Group>
                <Button  type='submit'   id='root-button'>CALCULATE</Button>
-               <Button id='root-api' >GET DATA</Button>
+               <Button onClick={getdata} id='root-api' >GET DATA</Button>
 
 
                <div className='root-answer'>
@@ -74,7 +88,42 @@ const Bisection =()=>{
 
                </div>
 
+             
+
+           
+
+               <div className='root-table'>
+                     { result.length !== 0 &&
+                     <Table striped bordered hover>
+                           <thead>
+                                <th>ITERATION</th>
+                                <th>XM</th>
+                                <th>XL</th>
+                                <th>XR</th>
+                                <th>ERROR</th>
+                           </thead>
+
+                           <tbody>
+                               {result.map((e)=>(
+                                   <tr>
+                                       <td>{e.iteration}</td>
+                                       <td>{e.xm}</td>
+                                       <td>{e.xl}</td>
+                                       <td>{e.xr}</td>
+                                       <td>{e.error}</td>
+                                   </tr>
+                               ))}
+                           </tbody>
+                     </Table>}
+               </div>
+
+               <div className='root-graph'>
+                        <Chart data = {result}/>
+               </div>
+
             </Form>
+
+            
             
            
           

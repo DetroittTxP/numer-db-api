@@ -78,4 +78,18 @@ h1 {
 
 .root-answer {
   margin-top: 25px;
+}
+
+.root-table {
+  position: absolute;
+  display: block;
+  left: 550px;
+}
+
+.root-graph {
+  position: absolute;
+  top: 1570px;
+  left: 450px;
+  height: 500px;
+  width: 1000px;
 }/*# sourceMappingURL=main.css.map */
